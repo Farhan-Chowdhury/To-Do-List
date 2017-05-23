@@ -1,14 +1,37 @@
-
 <form>
-    <h1><label>Title: </label><input type="text" name="title" [(ngModel)]=title/></h1><br>
-    <h1>Date: {{date}} </h1>
-    <h2>Tasks for this list</h2>
-      <div *ngFor="let l of list; let i = index">
-          <md-checkbox>{{ l }}</md-checkbox>
-          <button (click)="deleteL(i)">X</button>
-      </div>
-</form>
-    <form (submit)="add(l.value)">
-        <label>Add Task: </label><input type="text" #l>
-    </form>
+   <md-input-container>
+    <input mdInput placeholder="Title" type="text" name="project.name" [(ngModel)]="project.name">
+   </md-input-container>
+</form> 
+<h1>{{ project.name }}</h1>
+<md-tab-group>
+  <md-tab label="Incomplete Tasks">
+    <table>
+      <tr *ngFor="let task of project.tasks; let index = index">
+        <div *ngIf="!task.completed">
+          <td><md-checkbox [checked]="task.completed" (click)="toggleTask(index)">{{ task.text }}</md-checkbox></td>
+          <td><button md-mini-fab (click)="deleteTask(index)"><md-icon>clear</md-icon></button></td>
+        </div>
+      </tr>    
+    </table>
+  </md-tab>
 
+  <md-tab label="Completed Tasks">
+    <table>
+      <tr *ngFor="let task of project.tasks; let index = index">
+        <div *ngIf="!!task.completed">
+          <td><md-checkbox [checked]="task.completed" (click)="toggleTask(index)">{{ task.text }}</md-checkbox></td>
+          <td><button md-mini-fab (click)="deleteTask(index)"><md-icon>clear</md-icon></button></td>
+        </div>
+      </tr>    
+    </table>
+  </md-tab>
+</md-tab-group>
+
+   
+<!--<form (submit)="createTask(taskInputField.value)">
+  <md-input-container>
+    <input mdInput placeholder="Add Task" type="text" #taskInputField>
+  </md-input-container>
+</form>
+-->

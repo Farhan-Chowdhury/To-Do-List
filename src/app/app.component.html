@@ -1,0 +1,8 @@
+<md-sidenav-container class="container">
+  <ui-ribbon [sidenav]="sidenav"></ui-ribbon>
+  <ul *ngIf="!currentProject">
+    <li *ngFor="let project of projects; let index = index;" (click)="projectOnClick(index)">{{ project.name }}</li>
+  </ul>
+  <add-list *ngIf="!!currentProject"></add-list>
+  <md-sidenav #sidenav class="sidenav">Main Menu</md-sidenav>/
+</md-sidenav-container>

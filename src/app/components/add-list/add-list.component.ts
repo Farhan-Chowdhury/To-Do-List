@@ -1,21 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Task } from '../../shared/task';
+import { Project } from '../../shared/project';
+import { ListService } from '../../services/list/list.service';
+
 
 @Component({
   selector: 'add-list',
   templateUrl: './add-list.component.html',
-  // styleUrls: [ './add-list.component.css' ],
 })
-export class AddlistComponent {
-  title: string = 'Tuseday Todo List ';
-  date: string  = '12/03/2017';
-  list: string[] = ['Work on framing', 'New Task'];
+export class AddlistComponent implements OnInit {
+  public project: Project;
 
-  add(l: string): void {
-    this.list.push(l);
+  constructor (
+    private _listService: ListService,
+  ) {}
+
+  public ngOnInit(): void {
+    this.project = this._listService.currentProject;
   }
 
-  deleteL(i: number): void {
-    this.list.splice(i, 1);
+  public toggleTask(index: number): void {
+    this._listService.toggleTask(index);
   }
 }
 
