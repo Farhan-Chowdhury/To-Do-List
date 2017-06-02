@@ -1,25 +1,116 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+html, body {
+  height:100%;
+}
+
+
 .spacer {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
 }
-/*.container {
-  width: 500px;
-  height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+
+.mat-sidenav-content {
+  display: flex !important;
+  flex-direction: column;
 }
 
+.routerbox {
+  flex: 1;
+}
+
+/*@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';*/
+.sideNavText {
+  color: white;
+}
+
+.allTaskContainer{
+  margin: 5%;
+  padding: 1%;
+  background: #F8F8FF;
+}
 .sidenav-content {
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
 }
-
 .sidenav {
   padding: 20px;
+  width: 20%;
+  font-size: 20px;
+  background: black;
 }
-*/
+
+.container {
+  background: #F5F5F5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+ .container-1{
+  display: flex;
+  justify-content: center;
+
+  /*
+  align-items:flex-start;
+  align-items:flex-end;
+  align-items:center;
+  
+  flex-direction:column;
+  */
+    }
+  .box-1{
+    width: 100%;
+  }
+  md-card{
+    margin: 15px;
+  }
+  md-card:hover{
+    background: #FFBF00;
+    font-style: bold;
+  }
+
+  .footer{
+    padding: 20px;
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .logo {
+    height: 170%;
+    width: 10%;
+  }
+  .footerText{
+    color: white;
+    text-decoration:  none;
+  }  
+
+  .cardContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .task{
+    display: flex;
+    justify-content: flex-start;
+  }
+  .removeButton{
+    display: flex;
+    justify-content: flex-end;
+   
+  }
+  .addTaskBox{
+    display: flex;
+  }
+  .md-tab-group{
+    display: flex;
+    justify-content: space-around;
+  }
+  .addButton{
+    margin: 3%;
+  }

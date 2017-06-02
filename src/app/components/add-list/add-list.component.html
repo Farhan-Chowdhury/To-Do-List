@@ -1,37 +1,21 @@
-<form>
-   <md-input-container>
-    <input mdInput placeholder="Title" type="text" name="project.name" [(ngModel)]="project.name">
-   </md-input-container>
-</form> 
-<h1>{{ project.name }}</h1>
-<md-tab-group>
-  <md-tab label="Incomplete Tasks">
-    <table>
-      <tr *ngFor="let task of project.tasks; let index = index">
-        <div *ngIf="!task.completed">
-          <td><md-checkbox [checked]="task.completed" (click)="toggleTask(index)">{{ task.text }}</md-checkbox></td>
-          <td><button md-mini-fab (click)="deleteTask(index)"><md-icon>clear</md-icon></button></td>
-        </div>
-      </tr>    
-    </table>
-  </md-tab>
+<div class="container">
+  <div class="container-1">
+    <div class="box-1">
+      <div class = "allTaskContainer"*ngIf="!listService.currentProject">
+        <div class = "addButton"><button md-fab (click)="newProjectOnClick()"><md-icon>add</md-icon></button> Add List </div>
+        <md-card *ngFor="let project of listService.projects" (click)="projectOnClick(project)">
+          <div class="cardContent">
+            <span>{{ project.name }}</span>
+            <button md-mini-fab (click)="deleteProjectOnClick(project)">
+              <md-icon>delete</md-icon>
+            </button>
+          </div>
+        </md-card>
+      </div>
 
-  <md-tab label="Completed Tasks">
-    <table>
-      <tr *ngFor="let task of project.tasks; let index = index">
-        <div *ngIf="!!task.completed">
-          <td><md-checkbox [checked]="task.completed" (click)="toggleTask(index)">{{ task.text }}</md-checkbox></td>
-          <td><button md-mini-fab (click)="deleteTask(index)"><md-icon>clear</md-icon></button></td>
-        </div>
-      </tr>    
-    </table>
-  </md-tab>
-</md-tab-group>
+      <div *ngIf="listService.currentProject">
+      </div>
 
-   
-<!--<form (submit)="createTask(taskInputField.value)">
-  <md-input-container>
-    <input mdInput placeholder="Add Task" type="text" #taskInputField>
-  </md-input-container>
-</form>
--->
+    </div>
+  </div>
+</div>

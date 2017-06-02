@@ -1,8 +1,14 @@
+
 <md-sidenav-container class="container">
-  <ui-ribbon [sidenav]="sidenav"></ui-ribbon>
-  <ul *ngIf="!currentProject">
-    <li *ngFor="let project of projects; let index = index;" (click)="projectOnClick(index)">{{ project.name }}</li>
-  </ul>
-  <add-list *ngIf="!!currentProject"></add-list>
-  <md-sidenav #sidenav class="sidenav">Main Menu</md-sidenav>/
+
+<ui-ribbon [sidenav]="sidenav"></ui-ribbon>    
+
+<md-sidenav #sidenav class="sidenav"><button md-button (click)="homeOnClick()"><button md-fab ><md-icon>home</md-icon></button><a class="sideNavText"> Home </a></button></md-sidenav>
+
+<div class="routerbox">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="footer"><a class = "footerText" href="?">© 2017 Biznas Innovations Inc.</a></div>
+
 </md-sidenav-container>

@@ -1,0 +1,45 @@
+<div class="allTaskContainer">
+<form>
+  <md-input-container>
+    <input mdInput placeholder="Title" type="text" name="project.name" [(ngModel)]="project.name">
+  </md-input-container>
+</form>
+
+<h1>{{ project.name }}</h1>
+
+<md-tab-group>
+  <md-tab label="Incomplete Tasks">
+    <div>
+      <div class="tasksContainer" *ngFor="let task of project.tasks; let index = index">
+        <md-card *ngIf="!task.completed">
+          <div class="cardContent">
+            <div class="task"><md-checkbox [checked]="task.completed" (click)="toggleTask(index)">{{ task.text }}</md-checkbox></div>
+            <div class="removeButton"><button md-mini-fab (click)="deleteTask(index)"><md-icon>clear</md-icon></button></div>
+          </div>
+        </md-card>
+      </div>    
+    </div>
+  </md-tab>
+
+  <md-tab label="Completed Tasks">
+    <div>
+      <div class="tasksContainer" *ngFor="let task of project.tasks; let index = index">
+        <md-card *ngIf="!!task.completed">
+          <div class="cardContent">
+          <div class="task"><md-checkbox [checked]="task.completed" (click)="toggleTask(index)">{{ task.text }}</md-checkbox></div>
+          <div class="removeButton"><button md-mini-fab (click)="deleteTask(index)"><md-icon>clear</md-icon></button></div>  
+          </div>
+        </md-card>
+      </div>    
+    </div>
+  </md-tab>
+</md-tab-group>
+
+<div class= "addTaskBox">
+  <form (submit)="createTask(taskInputField.value)">
+    <md-input-container>
+      <input mdInput placeholder="Add Task" type="text" #taskInputField>
+    </md-input-container>
+  </form>
+</div>
+</div>
